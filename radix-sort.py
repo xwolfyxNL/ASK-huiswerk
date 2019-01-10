@@ -1,5 +1,7 @@
 def my_sort(lst):
-  RADIX = 10
+  # Waarde "RADIX" aanpassen voor grotere getallen, hoe groter hoe langer het sorteren duurt.
+  # Waarde RADIX = 10000 kan getallen tot 9999
+  RADIX = 10000
   tmp , placement = -1, 1
 
   while True:
