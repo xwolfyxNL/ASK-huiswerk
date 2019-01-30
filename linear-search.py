@@ -1,11 +1,15 @@
-def search_linear(lst, item, index=0):
-    if lst[0] == item:
-        return index
-    if len(lst[1:]) == 0:
-        return False
-    s = search_linear(lst[1:], item, index + 1)
-    return s
-
-example = [19, 2, 31, 45, 30, 11, 121, 27]
+def search_linear( example, list, result, searchnumber): 
+    if result < list: 
+        return -1
+    if example[list] == searchnumber: 
+        return list 
+    if example[result] == searchnumber: 
+        return result 
+    return search_linear(example, list+1, result-1, searchnumber) 
+  
+example = [19, 2, 31, 45, 30, 11, 121, 27] 
+number = len(example) 
+searchnumber = 30
+index = search_linear(example, 0, number-1, searchnumber) 
 print("Het getal bevind zich op positie:")
-print(search_linear(example, 30))
+print(index)
