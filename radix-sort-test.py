@@ -22,13 +22,13 @@ def my_sort(lst):
 
     # Kijk of de lijst positief of negatief is en stop vervolgens de gesorteerde getallen in de juiste lijst
     for number in lst:
-        if number > 0:
+        if number >= 0:
             return lstpositive
         else:
             return lstnegative
 
 if __name__ == '__main__':
-    lst = [210, -124, -7, 9324, 32, -10]
+    lst = [210, 0, -124, -7, 9324, 32, -10]
     print("Dit was de lijst voor de RADIX sortering:")
     print(lst)
 
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     lstpositive = []
     lstnegative = []
     for number in lst:
-        if number > 0:
+        if number >= 0:
             lstpositive.append(number)
         else:
             lstnegative.append(number)
