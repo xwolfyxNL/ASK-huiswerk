@@ -2,7 +2,7 @@ def my_sort(lst):
   # Waarde "RADIX" aanpassen voor grotere getallen, hoe groter hoe langer het sorteren duurt.
   # Waarde RADIX = 10000 kan getallen tot 9999
   RADIX = 10000
-  tmp , placement = -1, 1
+  tmp , placement, = -1, 1,
 
   while True:
     buckets = [list() for _ in range( RADIX )]
@@ -19,4 +19,10 @@ def my_sort(lst):
         a += 1
 
     placement *= RADIX
-    return lst
+
+    # Kijk of de lijst positief of negatief is en stop vervolgens de gesorteerde getallen in de juiste lijst
+    for number in lst:
+        if number > 0:
+            return lstpositive
+        else:
+            return lstnegative

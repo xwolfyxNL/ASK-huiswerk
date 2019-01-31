@@ -3,24 +3,11 @@ def my_sort(lst):
   # Waarde RADIX = 10000 kan getallen tot 9999
   RADIX = 10000
   tmp , placement, = -1, 1,
-  
-  # Splits de lijst in 1 met positieve en 1 met negatieve cijfers
-  lstpositive = []
-  lstnegative = []
-  for number in lst: 
-    if number > 0: 
-        lstpositive.append(number)
-    else: 
-        lstnegative.append(number)
-  
-  print ("Tussentijdse splitsing:")      
-  print (lstpositive)
-  print (lstnegative)
 
   while True:
     buckets = [list() for _ in range( RADIX )]
 
-    for i in lstpositive:
+    for i in lst:
       tmp = int((i / placement) % RADIX)
       buckets[tmp].append(i)
 
@@ -28,20 +15,36 @@ def my_sort(lst):
     for b in range( RADIX ):
       buck = buckets[b]
       for i in buck:
-        lstpositive[a] = i
+        lst[a] = i
         a += 1
 
     placement *= RADIX
-    
-    print ("Na de sortering:")
-    print (lstpositive)
-    print (lstnegative)
-    return lst
+
+    # Kijk of de lijst positief of negatief is en stop vervolgens de gesorteerde getallen in de juiste lijst
+    for number in lst:
+        if number > 0:
+            return lstpositive
+        else:
+            return lstnegative
 
 if __name__ == '__main__':
-    lst = [210, -7, -124, 9324, 32, -10]
+    lst = [210, -124, -7, 9324, 32, -10]
     print("Dit was de lijst voor de RADIX sortering:")
     print(lst)
-    my_sort(lst)
+
+    # Splits de lijst in 1 met positieve en 1 met negatieve cijfers
+    lstpositive = []
+    lstnegative = []
+    for number in lst:
+        if number > 0:
+            lstpositive.append(number)
+        else:
+            lstnegative.append(number)
+
+    # Sorteer beiden lijsten en voeg ze samen
+    my_sort(lstpositive)
+    my_sort(lstnegative)
+    lst = lstnegative + lstpositive
+
     print("Dit was de lijst na de RADIX sortering:")
     print(lst)
